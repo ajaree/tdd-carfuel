@@ -10,12 +10,15 @@ namespace CarFuel.DataAccess
     public class FakeCarDb : ICarDb
     {
         private ICollection<Car> cars;
+
+        public bool AddMethodHasCalled { get; set; } = false;
         public FakeCarDb() {
             cars = new HashSet<Car>();
         }
         public Car Add(Car item)
         {
             cars.Add(item);
+            AddMethodHasCalled = true;
             return item;
         }
 
